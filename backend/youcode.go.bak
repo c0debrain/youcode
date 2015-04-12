@@ -1,0 +1,63 @@
+package youcode
+
+import (
+	"encoding/json"
+	"net/http"
+
+	"github.com/gorilla/mux"
+
+	"appengine"
+	"appengine/datastore"
+)
+
+type Channel struct {
+	YouTubeID string
+	Name      string
+}
+
+func init() {
+	r := mux.NewRouter()
+
+	r.HandleFunc("/api/channels", listChannels).Methods("GET")
+	r.HandleFunc("/api/channels", addChannel).Methods("POST")
+
+	http.Handle("/", r)
+}
+
+func listChannels(w http.ResponseWriter, r *http.Request) {
+	var channels []Channel
+
+	c := appengine.NewContext(r)
+	_, err := datastore.NewQuery("Channel").GetAll(c, &channels)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+
+	err = json.NewEncoder(w).Encode(channels)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+}
+
+func addChannel(w http.ResponseWriter, r *http.Request) {
+	c := appengine.NewContext(r)
+
+	var ch Channel
+	if err := json.NewDecoder(r.Body).Decode(&ch); err != nil {
+		http.Error(w, "bad channel", http.StatusBadRequest)
+		return
+	}
+
+	if ch.Name == "" || ch.YouTubeID == "" {
+		http.Error(w, "empty channel", http.StatusBadRequest)
+		return
+	}
+
+	k := datastore.NewKey(c, "Channel", ch.YouTubeID, 0, nil)
+	_, err := datastore.Put(c, k, &ch)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+
+	w.WriteHeader(http.StatusCreated)
+}

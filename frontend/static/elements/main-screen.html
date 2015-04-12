@@ -1,0 +1,33 @@
+<!-- Made with this tutorial: https://k33g.github.io/2014/08/09/POLYMER-MOB-PAPER.html -->
+<!-- https://www.polymer-project.org/0.5/articles/spa.html -->
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="youcode-menu.html">
+
+<polymer-element name="main-screen">
+
+  <template>
+
+    <core-scaffold>
+
+
+    <youcode-menu></youcode-menu>
+
+      <div fit>
+        <h1>Polymer Rocks!</h1>
+      </div>
+
+    </core-scaffold>
+  </template>
+
+  <script>
+
+    Polymer("main-screen", {
+      ready: function() {
+        console.log("Main screen is ready!")
+      }
+    });
+
+  </script>
+
+</polymer-element>
