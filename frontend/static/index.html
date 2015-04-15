@@ -10,23 +10,33 @@
 	<!-- Importing Polymer's elements -->
 	<script src="bower_components/webcomponentsjs/webcomponents.js"></script>
 	<link rel="import" href="elements.html">
-	<!-- own components -->
-<link rel="import" href="elements/welcome-elements.html">
+	
 </head>
 
 <body unresolved>
 	<template is="auto-binding" id="app">
 		<core-drawer-panel>
 			<core-header-panel drawer>
-				<core-toolbar>Menu</core-toolbar>
+				<core-toolbar>
+				
+					<input is="core-input" placeholder="search" value="{{value}}">
+					<a href="#!/result/{{value}}">OK</a>
+				</more-route-selector>
+				</core-toolbar>
 
 					<more-route-selector>
 						<core-menu>
-							<core-item label="Search" route="search">
-								<a href="{{urlFor('search')}}"></a>
+							<core-item label="Home" route="home">
+								<a href="{{urlFor('home')}}"></a>
 							</core-item>
 							<core-item label="About" route="about">
 								<a href="{{urlFor('about')}}"></a>
+							</core-item>
+							<core-item label="Data" route="data">
+								<a href="{{urlFor('data')}}"></a>
+							</core-item>
+							<core-item label="Conferences" route="conferences">
+								<a href="{{urlFor('conferences')}}"></a>
 							</core-item>
 							<core-item label="Channels" route="channels">
 								<a href="{{urlFor('channels')}}"></a>
@@ -42,20 +52,32 @@
 				</core-toolbar>
 					<main>
 						<!-- route container -->
-						<more-route-selector>
+						<more-route-selector selectedParams="{{params}}">
 							<!-- handling pages to route -->
 							<core-pages>
-								<section route="search">
+								<section route="home">
 									<!-- our element to create welcome page -->
 									<youcode-welcome></youcode-welcome>
 								</section>
+								<section route="result">
+									<!-- our element to create welcome page -->
+									<h1>Result of youcode search Page!</h1>
+									<p>value = {{params.query}}</p>
+								</section>
 								<section route="about">
-									<h1>About</h1>
-									<p>about page!</p>
+									<!-- our element to create about page -->
+									<youcode-about></youcode-about>
+								</section>
+								<section route="data">
+									<!-- our element to create about page -->
+									<youcode-data></youcode-data>
+								</section>
+								<section route="conferences">
+									<!-- our element to create about page -->
+									<youcode-conferences></youcode-conferences>
 								</section>
 								<section route="channels">
-									<h1>Channels</h1>
-									<p>channels page!</p>
+									<youcode-channels></youcode-channels>
 								</section>
 							</core-pages>
 						</more-route-selector>
