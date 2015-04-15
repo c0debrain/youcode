@@ -1,0 +1,60 @@
+<!-- welcome-elements.html -->
+<!-- import polymer for this element -->
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/core-icons/core-icons.html">
+
+<polymer-element name="youcode-welcome" noscript>
+	<template>
+		<h1 class="title">Find talks or tutorials on Youtube easily</h1>
+		<div class="youcode-card">
+			<core-icon class="big" icon="extension"></core-icon>
+			<h1>Build by developers,<br>for developers</h1>
+			<p>We are like you, developers. We love learning new frameworks by ourselves. Youtube offers hundred of talks and tuts, but it could be difficult to find. This is what YouCode is all about.</p>
+		</div>
+		<div class="youcode-card">
+			<core-icon class="big" icon="cloud-done"></core-icon>
+			<h1>Powered by<br>Google</h1>
+			<p>We are using all the latest technologies provided by Google to bring YouCode online. We're using Google App Engine to host the app written in Golang, Youtube API to search through it and AngularJS for easy rendering.</p>
+		</div>
+		<div class="youcode-card">
+			<core-icon class="big" icon="attachment"></core-icon>
+			<h1>Open-source<br>Project</h1>
+			<p>We strongly believe that open-source code help everyone, that's why the whole project is hosted on <a href="https://github.com/youcodeio" target="_blank">Github</a>. Even the server-side code. You can fork it, and do whatever you want, especially learn !</p>
+		</div>
+		<div class="youcode-card">
+			<core-icon class="big" icon="create"></core-icon>
+			<h1>Learn from<br>the best</h1>
+			<p>There are many organizers who put their talks on Youtube. Speakers know their subject, and their goal is to teach you things. What are you waiting for?</p>
+		</div>
+		<div class="youcode-card">
+			<core-icon class="big" icon="visibility"></core-icon>
+			<h1>See developers<br>in action</h1>
+			<p>Talks are great. But sometimes, you need to have a more didactical point of view. By going through a tutorial, you'll start faster.</p>
+		</div>
+		<div class="youcode-card">
+			<core-icon class="big" icon="apps"></core-icon>
+			<h1>Our data is<br> your data</h1>
+			<p>The same way we believe in open source software, we put our effort into building an OpenData plateform. Have a look on your stat, and <a href="https://twitter.com/you_codeio" target="_blank">ask us</a> if you want an access.</p>
+		</div>
+	</template>
+
+	<style>
+	.title{
+		font-weight: 100;
+		font-size: 2em;
+		text-align: center;
+	}
+
+	.big {
+	height: 100px;
+	width: 100px;
+	}
+
+	.youcode-card{
+		width: 300px;
+		height: 300px;
+		text-align: center;
+		display: inline-block;
+	}
+	</style>
+</polymer-element>

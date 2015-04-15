@@ -10,6 +10,8 @@
 	<!-- Importing Polymer's elements -->
 	<script src="bower_components/webcomponentsjs/webcomponents.js"></script>
 	<link rel="import" href="elements.html">
+	<!-- own components -->
+<link rel="import" href="elements/welcome-elements.html">
 </head>
 
 <body unresolved>
@@ -41,10 +43,11 @@
 					<main>
 						<!-- route container -->
 						<more-route-selector>
+							<!-- handling pages to route -->
 							<core-pages>
 								<section route="search">
-									<h1>Search</h1>
-									<p>search page!</p>
+									<!-- our element to create welcome page -->
+									<youcode-welcome></youcode-welcome>
 								</section>
 								<section route="about">
 									<h1>About</h1>
