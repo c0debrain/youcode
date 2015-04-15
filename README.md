@@ -7,6 +7,7 @@ This is the code behind [YouCode](http://youcode.io/), a plateform to find talks
 The whole project is powered by Go and App Engine, so you need [Go](https://golang.org/) and [Go Runtime for GAE](https://cloud.google.com/appengine/docs/go/).
 To test, run on the root directory:
 ```bash
+goapp get github.com/GoogleCloudPlatform/go-endpoints/endpoints
 goapp serve dispatch.yaml backend/app.yaml frontend/app.yaml
 ```
 ### The frontend
